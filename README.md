@@ -1,6 +1,10 @@
 # AgriNova: Smart Agriculture, Marketplace & Decision Support System
 
-AgriNova is an end-to-end intelligent agriculture, marketplace, and agricultural decision-support ecosystem. It connects farmers, buyers/consumers, and administrators with smart tools including AI advisory, crop price discovery (Mandi prices), live chat moderation, geo-location mapping, and automated order/invoice processing.
+[![Frontend Status](https://img.shields.io/badge/Frontend-Live_on_Vercel-black?logo=vercel)](https://agri-nova-chi.vercel.app/)
+[![Backend Status](https://img.shields.io/badge/Backend-Live_on_Render-46E3B7?logo=render)](https://agrinova-backend-jdjq.onrender.com/)
+
+- 🌐 **Live Website**: [https://agri-nova-chi.vercel.app/](https://agri-nova-chi.vercel.app/)
+- ⚙️ **API Service**: [https://agrinova-backend-jdjq.onrender.com/](https://agrinova-backend-jdjq.onrender.com/)
 
 ---
 
