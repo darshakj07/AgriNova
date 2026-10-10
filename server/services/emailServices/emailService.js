@@ -1,13 +1,14 @@
 import nodemailer from 'nodemailer';
 
 const createTransporter = (user, pass) => nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 465,
-  secure: true,
+  service: 'gmail',
   auth: {
     user,
     pass
-  }
+  },
+  connectionTimeout: 6000,
+  greetingTimeout: 6000,
+  socketTimeout: 6000
 });
 
 const getVerificationEmailTemplate = (email, otpCode, purpose = 'verification') => {
@@ -152,7 +153,6 @@ export const sendVerificationEmail = async (email, otpCode, purpose = 'verificat
   }
 
   const transporter = createTransporter(emailUser, emailPass);
-  await transporter.verify();
   const subject = purpose === 'password_reset'
     ? `AgriNova Password Reset Code: ${otpCode}`
     : `AgriNova Verification Code: ${otpCode}`;

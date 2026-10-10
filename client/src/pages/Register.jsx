@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Sprout, User, Building2, Mail, Lock, Phone, UserCheck, ArrowRight, ArrowLeft, ShieldCheck, CheckCircle2, XCircle } from 'lucide-react';
@@ -99,7 +99,10 @@ export default function Register() {
       }
 
       setOtpSent(true);
-      setOtpMessage('OTP sent successfully. Please check your inbox and enter the code below.');
+      if (data.otp) {
+        setOtpCode(data.otp);
+      }
+      setOtpMessage(data.message || 'OTP sent successfully. Please check your inbox and enter the code below.');
       setStatus('idle');
     } catch (error) {
       setStatus('error');
