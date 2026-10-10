@@ -146,7 +146,7 @@ const getVerificationEmailTemplate = (email, otpCode, purpose = 'verification') 
 
 export const sendVerificationEmail = async (email, otpCode, purpose = 'verification') => {
   const emailUser = process.env.EMAIL_USER?.trim();
-  const emailPass = process.env.EMAIL_PASS?.trim();
+  const emailPass = process.env.EMAIL_PASS?.replace(/\s+/g, '').trim();
 
   if (!emailUser || !emailPass) {
     throw new Error('Email service is not configured. Set EMAIL_USER and EMAIL_PASS in .env');
@@ -169,21 +169,13 @@ export const sendVerificationEmail = async (email, otpCode, purpose = 'verificat
 
 export const sendAccountBlockEmail = async (email, name, isBlocked, reason) => {
   const emailUser = process.env.EMAIL_USER?.trim();
-  const emailPass = process.env.EMAIL_PASS?.trim();
+  const emailPass = process.env.EMAIL_PASS?.replace(/\s+/g, '').trim();
 
   if (!emailUser || !emailPass) {
     throw new Error('Email service is not configured. Set EMAIL_USER and EMAIL_PASS in .env');
   }
 
-  const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true,
-    auth: {
-      user: emailUser,
-      pass: emailPass
-    }
-  });
+  const transporter = createTransporter(emailUser, emailPass);
 
   await transporter.verify();
 
