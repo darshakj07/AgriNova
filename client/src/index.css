@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  body {
+    @apply transition-colors duration-300;
+  }
+  
+  .dark {
+    --color-bg-base: #0F172A;
+    --color-charcoal: #F8FAFC;
+    --color-charcoal-light: #CBD5E1;
+  }
+
+  .dark .bg-charcoal {
+    background-color: #0B1120 !important;
+  }
+  
+  .dark .bg-charcoal-light {
+    background-color: #1E293B !important;
+  }
+}
+
+
+@theme {
+  --color-primary: #2E7D32;
+  --color-primary-light: #4caf50;
+  --color-primary-dark: #1b5e20;
+  --color-secondary: #66BB6A;
+  --color-accent: #F9A825;
+  --color-accent-light: #fbc02d;
+  --color-bg-base: #F8FAF5;
+  --color-charcoal: #263238;
+  --color-charcoal-light: #37474f;
+  
+  --font-sans: "Inter", sans-serif;
+  --font-display: "Outfit", sans-serif;
+  
+  --animate-fade-in: fade-in 0.6s ease-out forwards;
+  --animate-slide-up: slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-pulse-subtle: pulse-subtle 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes slide-up {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  @keyframes pulse-subtle {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: .85; transform: scale(1.02); }
+  }
+}
+
+/* Custom background patterns and styling helpers */
+@layer base {
+  body {
+    background-color: var(--color-bg-base);
+    color: var(--color-charcoal);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    color: var(--color-charcoal);
+  }
+}
+
+/* Glassmorphism utility classes */
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.dark .glassmorphism {
+  background: rgba(30, 41, 59, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glassmorphism-dark {
+  background: rgba(38, 50, 56, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glassmorphism-green {
+  background: rgba(46, 125, 50, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(46, 125, 50, 0.15);
+}
+
+.dark .glassmorphism-green {
+  background: rgba(46, 125, 50, 0.15);
+  border: 1px solid rgba(46, 125, 50, 0.25);
+}
+
+/* Custom grid patterns */
+.grid-pattern {
+  background-size: 40px 40px;
+  background-image: linear-gradient(to right, rgba(46, 125, 50, 0.03) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(46, 125, 50, 0.03) 1px, transparent 1px);
+}
+
+.dot-pattern {
+  background-size: 20px 20px;
+  background-image: radial-gradient(circle, rgba(46, 125, 50, 0.05) 1px, transparent 1px);
+}
+
+/* Hide scrollbar but keep functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Global Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(38, 50, 56, 0.15); /* Charcoal at 15% opacity */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(38, 50, 56, 0.3); /* Charcoal at 30% opacity */
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(38, 50, 56, 0.15) transparent;
+}
+
+.dark * {
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+/* Browser Autofill dark mode fix */
+.dark input:-webkit-autofill,
+.dark input:-webkit-autofill:hover, 
+.dark input:-webkit-autofill:focus, 
+.dark input:-webkit-autofill:active,
+.dark textarea:-webkit-autofill,
+.dark textarea:-webkit-autofill:hover,
+.dark textarea:-webkit-autofill:focus,
+.dark select:-webkit-autofill,
+.dark select:-webkit-autofill:hover,
+.dark select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #F8FAFC !important;
+  transition: background-color 5000s ease-in-out 0s !important;
+}
+

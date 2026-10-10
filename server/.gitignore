@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Environment Variables & Secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS and Editor
+.DS_Store
+.idea/
+.vscode/
