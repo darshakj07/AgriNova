@@ -343,7 +343,7 @@ export default function Messages() {
       }`}>
         
         {/* Sidebar Header */}
-        <div className="p-4 border-b border-gray-50 space-y-3">
+        <div className="p-4 border-b border-gray-100 dark:border-gray-800 space-y-3">
           <div>
             <h2 className="font-display font-extrabold text-xl text-charcoal dark:text-gray-100">Supplier Chats</h2>
             <p className="text-xs text-gray-400 font-semibold mt-0.5">Secure direct messages with verified farmers.</p>
@@ -363,7 +363,7 @@ export default function Messages() {
         </div>
 
         {/* Chats List */}
-        <div className="flex-1 overflow-y-auto divide-y divide-gray-50 p-2 space-y-1">
+        <div className="flex-1 overflow-y-auto divide-y divide-gray-100 dark:divide-gray-800 p-2 space-y-1">
           {loading ? (
             <div className="py-20 flex flex-col items-center justify-center">
               <Loader2 className="w-8 h-8 animate-spin text-primary mb-2" />
@@ -637,7 +637,7 @@ export default function Messages() {
           {/* Farmer Details Panel */}
           {showDetails && (
             <div className="w-80 shrink-0 border-l border-gray-100 dark:border-gray-800 bg-white dark:bg-[#1E293B] flex flex-col h-full overflow-y-auto p-6 space-y-6 hidden md:flex">
-              <div className="flex justify-between items-center pb-4 border-b border-gray-50">
+              <div className="flex justify-between items-center pb-4 border-b border-gray-100 dark:border-gray-800">
                 <h4 className="font-display font-extrabold text-xs text-charcoal dark:text-gray-100 uppercase tracking-wider">Farmer Profile</h4>
                 <button
                   onClick={() => setShowDetails(false)}
@@ -649,7 +649,7 @@ export default function Messages() {
 
               {/* Profile Overview */}
               <div className="text-center space-y-3">
-                <div className="w-16 h-16 rounded-2xl bg-[#F8FAF5] text-primary flex items-center justify-center font-display font-extrabold text-2xl border border-primary/10 mx-auto shadow-sm">
+                <div className="w-16 h-16 rounded-2xl bg-[#F8FAF5] dark:bg-[#0F172A] text-primary flex items-center justify-center font-display font-extrabold text-2xl border border-primary/10 mx-auto shadow-sm">
                   {activeChat.name.charAt(0)}
                 </div>
                 <div>
@@ -662,7 +662,7 @@ export default function Messages() {
               </div>
 
               {/* Location & Context */}
-              <div className="space-y-4 pt-4 border-t border-gray-50 text-sm font-semibold text-gray-600 dark:text-gray-300">
+              <div className="space-y-4 pt-4 border-t border-gray-100 dark:border-gray-800 text-sm font-semibold text-gray-600 dark:text-gray-300">
                 <div>
                   <span className="text-xs text-gray-400 block uppercase tracking-wider font-extrabold">Active Negotiation</span>
                   <span className="text-charcoal dark:text-gray-100 font-bold mt-1 block bg-[#F8FAF5] dark:bg-[#0F172A] border border-primary/5 p-2 rounded-xl text-center">

@@ -343,7 +343,7 @@ export default function Messages() {
       }`}>
         
         {/* Sidebar Header */}
-        <div className="p-4 border-b border-gray-50 space-y-3">
+        <div className="p-4 border-b border-gray-100 dark:border-gray-800 space-y-3">
           <div>
             <h2 className="font-display font-extrabold text-xl text-charcoal dark:text-gray-100">Negotiation Chats</h2>
             <p className="text-xs text-gray-400 font-semibold mt-0.5">Secure direct messages with active buyers.</p>
@@ -363,7 +363,7 @@ export default function Messages() {
         </div>
 
         {/* Chats List */}
-        <div className="flex-1 overflow-y-auto divide-y divide-gray-50 p-2 space-y-1">
+        <div className="flex-1 overflow-y-auto divide-y divide-gray-100 dark:divide-gray-800 p-2 space-y-1">
           {loading ? (
             <div className="py-20 flex flex-col items-center justify-center">
               <Loader2 className="w-8 h-8 animate-spin text-primary mb-2" />
@@ -460,7 +460,7 @@ export default function Messages() {
                   onClick={() => setShowDetails(!showDetails)}
                   className={`hidden md:flex p-2 rounded-xl border transition-colors hover:shadow-sm focus:outline-none cursor-pointer ${
                     showDetails
-                      ? 'border-primary/20 text-primary bg-[#F8FAF5]'
+                      ? 'border-primary/20 text-primary bg-[#F8FAF5] dark:bg-primary/10'
                       : 'border-gray-100 dark:border-gray-800 text-gray-400 hover:text-primary bg-white dark:bg-[#1E293B]'
                   }`}
                 >
@@ -637,7 +637,7 @@ export default function Messages() {
           {/* Buyer Details Panel */}
           {showDetails && (
             <div className="w-80 shrink-0 border-l border-gray-100 dark:border-gray-800 bg-white dark:bg-[#1E293B] flex flex-col h-full overflow-y-auto p-6 space-y-6 hidden md:flex">
-              <div className="flex justify-between items-center pb-4 border-b border-gray-50">
+              <div className="flex justify-between items-center pb-4 border-b border-gray-100 dark:border-gray-800">
                 <h4 className="font-display font-extrabold text-xs text-charcoal dark:text-gray-100 uppercase tracking-wider">Buyer Profile</h4>
                 <button
                   onClick={() => setShowDetails(false)}
@@ -649,7 +649,7 @@ export default function Messages() {
 
               {/* Profile Overview */}
               <div className="text-center space-y-3">
-                <div className="w-16 h-16 rounded-2xl bg-[#F8FAF5] text-primary flex items-center justify-center font-display font-extrabold text-2xl border border-primary/10 mx-auto shadow-sm">
+                <div className="w-16 h-16 rounded-2xl bg-[#F8FAF5] dark:bg-[#0F172A] text-primary flex items-center justify-center font-display font-extrabold text-2xl border border-primary/10 mx-auto shadow-sm">
                   {activeChat.name.charAt(0)}
                 </div>
                 <div>
@@ -662,10 +662,10 @@ export default function Messages() {
               </div>
 
               {/* Location & Context */}
-              <div className="space-y-4 pt-4 border-t border-gray-50 text-sm font-semibold text-gray-600 dark:text-gray-300">
+              <div className="space-y-4 pt-4 border-t border-gray-100 dark:border-gray-800 text-sm font-semibold text-gray-600 dark:text-gray-300">
                 <div>
                   <span className="text-xs text-gray-400 block uppercase tracking-wider font-extrabold">Active Negotiation</span>
-                  <span className="text-charcoal dark:text-gray-100 font-bold mt-1 block bg-[#F8FAF5] border border-primary/5 p-2 rounded-xl text-center">
+                  <span className="text-charcoal dark:text-gray-100 font-bold mt-1 block bg-[#F8FAF5] dark:bg-[#0F172A] border border-primary/5 p-2 rounded-xl text-center">
                     🌾 {activeChat.cropContext}
                   </span>
                 </div>
@@ -696,12 +696,12 @@ export default function Messages() {
 
         </div>
       ) : (
-        <div className="flex-1 hidden md:flex flex-col items-center justify-center text-center p-8 bg-[#FAFBF8]">
-          <div className="w-16 h-16 rounded-2xl bg-white dark:bg-[#1E293B] text-gray-300 flex items-center justify-center border border-charcoal/5 dark:border-white/5 shadow-xs mb-4">
+        <div className="flex-1 hidden md:flex flex-col items-center justify-center text-center p-8 bg-[#FAFBF8] dark:bg-[#0F172A]">
+          <div className="w-16 h-16 rounded-2xl bg-white dark:bg-[#1E293B] text-gray-400 dark:text-gray-500 flex items-center justify-center border border-charcoal/5 dark:border-white/5 shadow-xs mb-4">
             <Smile className="w-8 h-8 stroke-[1.5]" />
           </div>
           <h3 className="font-display font-bold text-charcoal dark:text-gray-100 text-sm">No Active Negotiation</h3>
-          <p className="text-sm text-gray-400 font-medium max-w-xs mt-1">
+          <p className="text-sm text-gray-400 dark:text-gray-400 font-medium max-w-xs mt-1">
             Select a buyer from the sidebar chat thread list to begin secure communication.
           </p>
         </div>
