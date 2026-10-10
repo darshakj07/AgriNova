@@ -271,25 +271,17 @@ export const sendOTP = async (req, res) => {
     const otpDoc = new OTP({ email: normalizedEmail, otp: otpCode });
     await otpDoc.save();
 
-    let emailSent = false;
-    try {
-      await sendVerificationEmail(normalizedEmail, otpCode);
-      emailSent = true;
-    } catch (mailErr) {
-      console.warn(`[OTP Send Note] SMTP dispatch failed (${mailErr.message}). Fallback code for ${normalizedEmail}: ${otpCode}`);
-    }
+    // Send real verification email via SMTP port 587
+    await sendVerificationEmail(normalizedEmail, otpCode);
 
     res.status(200).json({
       success: true,
-      message: emailSent
-        ? 'OTP sent successfully to your email address'
-        : `OTP sent! (Notice: If email delivery is delayed, your code is ${otpCode})`,
-      otp: otpCode
+      message: 'Verification code sent! Please check your email inbox (and Spam folder).'
     });
 
   } catch (error) {
     console.error(`[OTP Send Error] ${error.message}`);
-    res.status(500).json({ success: false, message: 'Failed to send OTP email. Please try again.' });
+    res.status(500).json({ success: false, message: `Failed to send email: ${error.message}` });
   }
 };
 
@@ -307,12 +299,6 @@ export const verifyOTP = async (req, res) => {
 
     const trimmedOtp = otp.toString().trim();
 
-    // Universal bypass for testing/demos
-    if (trimmedOtp === '123456') {
-      await OTP.deleteMany({ email: normalizedEmail });
-      return res.status(200).json({ success: true, message: 'Email address verified successfully' });
-    }
-
     // Find the latest OTP for this email
     const otpDoc = await OTP.findOne({ email: normalizedEmail }).sort({ createdAt: -1 });
 
@@ -320,9 +306,9 @@ export const verifyOTP = async (req, res) => {
       return res.status(400).json({ success: false, message: 'OTP has expired or is invalid. Please request a new code.' });
     }
 
-    // Check if matches
+    // Check if matches the real OTP generated and sent to email
     if (otpDoc.otp !== trimmedOtp) {
-      return res.status(400).json({ success: false, message: 'Incorrect OTP code. Please check and try again.' });
+      return res.status(400).json({ success: false, message: 'Incorrect OTP code. Please check your email and try again.' });
     }
 
     // Success - delete OTP

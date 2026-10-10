@@ -99,10 +99,8 @@ export default function Register() {
       }
 
       setOtpSent(true);
-      if (data.otp) {
-        setOtpCode(data.otp);
-      }
-      setOtpMessage(data.message || 'OTP sent successfully. Please check your inbox and enter the code below.');
+      setOtpCode('');
+      setOtpMessage(data.message || 'Verification code sent! Please check your email inbox.');
       setStatus('idle');
     } catch (error) {
       setStatus('error');

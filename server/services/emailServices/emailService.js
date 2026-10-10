@@ -1,14 +1,16 @@
 import nodemailer from 'nodemailer';
 
 const createTransporter = (user, pass) => nodemailer.createTransport({
-  service: 'gmail',
+  host: 'smtp.gmail.com',
+  port: 587,
+  secure: false, // port 587 with STARTTLS (allowed on cloud platforms like Render)
   auth: {
     user,
-    pass
+    pass: pass.replace(/\s+/g, '').trim()
   },
-  connectionTimeout: 6000,
-  greetingTimeout: 6000,
-  socketTimeout: 6000
+  tls: {
+    rejectUnauthorized: false
+  }
 });
 
 const getVerificationEmailTemplate = (email, otpCode, purpose = 'verification') => {
