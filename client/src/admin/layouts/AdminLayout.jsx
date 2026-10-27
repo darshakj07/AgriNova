@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Outlet, Navigate, useLocation, useNavigate, Link } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import ThemeToggle from '../../components/ThemeToggle';
+import LanguageSelector from '../../components/LanguageSelector';
 import AdminSidebar from '../components/AdminSidebar';
 import { Menu, ChevronDown, User, Settings, LogOut } from 'lucide-react';
 
@@ -81,7 +82,8 @@ export default function AdminLayout() {
             </span>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            <LanguageSelector />
             <ThemeToggle />
             {/* Right Side: Admin Logo Dropdown */}
             <div className="relative" ref={dropdownRef}>

@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Bell, ShieldCheck, Globe, Key, CheckCircle } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
 
 export default function Settings() {
+  const { currentLang, changeLanguage, languages } = useLanguage();
   const [emailNotifs, setEmailNotifs] = useState(true);
   const [smsNotifs, setSmsNotifs] = useState(true);
   const [whatsappNotifs, setWhatsappNotifs] = useState(false);
-  const [language, setLanguage] = useState('English');
+  const [language, setLanguage] = useState(currentLang);
+
+  useEffect(() => {
+    setLanguage(currentLang);
+  }, [currentLang]);
 
   const [passwordForm, setPasswordForm] = useState({ current: '', next: '', confirm: '' });
   const [success, setSuccess] = useState(false);
@@ -116,13 +122,18 @@ export default function Settings() {
               <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Select Preferred Register</label>
               <select
                 value={language}
-                onChange={(e) => setLanguage(e.target.value)}
-                className="w-full pl-4 pr-10 py-2.5 rounded-xl bg-gray-50 dark:bg-[#0F172A] border border-gray-150 dark:border-gray-800 focus:outline-none focus:border-primary/40 text-sm font-semibold text-charcoal dark:text-gray-100"
+                onChange={(e) => {
+                  const newLang = e.target.value;
+                  setLanguage(newLang);
+                  changeLanguage(newLang);
+                }}
+                className="w-full pl-4 pr-10 py-2.5 rounded-xl bg-gray-50 dark:bg-[#0F172A] border border-gray-150 dark:border-gray-800 focus:outline-none focus:border-primary/40 text-sm font-semibold text-charcoal dark:text-gray-100 notranslate cursor-pointer"
               >
-                <option value="English">English</option>
-                <option value="Hindi">हिन्दी (Hindi)</option>
-                <option value="Marathi">मराठी (Marathi)</option>
-                <option value="Telugu">తెలుగు (Telugu)</option>
+                {languages.map((l) => (
+                  <option key={l.code} value={l.code}>
+                    {l.native} ({l.label})
+                  </option>
+                ))}
               </select>
             </div>
           </div>

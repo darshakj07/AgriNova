@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ThemeToggle from '../../components/ThemeToggle';
+import LanguageSelector from '../../components/LanguageSelector';
 
 export default function BuyerNavbar({ user: propUser }) {
   const navigate = useNavigate();
@@ -146,6 +147,7 @@ export default function BuyerNavbar({ user: propUser }) {
           {/* Right Utilities Section */}
           <div ref={navDropdownRef} className="flex items-center gap-1 sm:gap-2.5 ml-auto lg:ml-0 shrink-0">
             
+            <LanguageSelector />
             <ThemeToggle />
 
             {/* Wishlist Link */}

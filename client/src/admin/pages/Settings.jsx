@@ -1,7 +1,9 @@
-﻿import React, { useState } from 'react';
-import { Settings as SettingsIcon, ShieldAlert, Cpu, Database, Save } from 'lucide-react';
+import React, { useState } from 'react';
+import { Settings as SettingsIcon, ShieldAlert, Cpu, Database, Save, Globe } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
 
 export default function Settings() {
+  const { currentLang, changeLanguage, languages } = useLanguage();
   const [sysConfig, setSysConfig] = useState({
     siteName: 'AgriNova Platform',
     supportEmail: 'support@agrinova.com',
@@ -152,6 +154,21 @@ export default function Settings() {
                   className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 dark:bg-[#0F172A] border border-gray-150 focus:outline-none focus:border-primary/30 text-sm font-semibold text-charcoal dark:text-gray-100"
                 />
               </div>
+            </div>
+
+            <div className="space-y-1">
+              <label className="text-[10px] text-gray-400 font-bold block uppercase">ACTIVE PLATFORM LANGUAGE</label>
+              <select
+                value={currentLang}
+                onChange={(e) => changeLanguage(e.target.value)}
+                className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 dark:bg-[#0F172A] border border-gray-150 focus:outline-none focus:border-primary/30 text-sm font-semibold text-charcoal dark:text-gray-100 notranslate cursor-pointer"
+              >
+                {languages.map((l) => (
+                  <option key={l.code} value={l.code}>
+                    {l.native} ({l.label})
+                  </option>
+                ))}
+              </select>
             </div>
 
             <div className="flex flex-col gap-3 pt-2">

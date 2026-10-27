@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import { User, Shield, Bell, Globe, Save, Lock, Smartphone, Check, Loader2 } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
 
 export default function Settings() {
   const [activeTab, setActiveTab] = useState('profile'); // profile | security | notifications | localization
@@ -8,6 +9,7 @@ export default function Settings() {
   const [successMsg, setSuccessMsg] = useState('');
   
   const { user, updateUser } = useOutletContext();
+  const { currentLang, changeLanguage, languages } = useLanguage();
   const API_BASE = import.meta.env.VITE_API_URL || import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
 
   // Form states populated from context
@@ -38,10 +40,14 @@ export default function Settings() {
   });
 
   const [localization, setLocalization] = useState({
-    language: 'English',
+    language: currentLang,
     areaUnit: 'Acres',
     tempUnit: 'Celsius'
   });
+
+  useEffect(() => {
+    setLocalization(prev => ({ ...prev, language: currentLang }));
+  }, [currentLang]);
 
   // Load initial settings
   useEffect(() => {
@@ -159,6 +165,10 @@ export default function Settings() {
     e.preventDefault();
     setLoading(true);
     setSuccessMsg('');
+
+    if (localization.language) {
+      changeLanguage(localization.language);
+    }
 
     setTimeout(() => {
       setLoading(false);
@@ -515,13 +525,18 @@ export default function Settings() {
                   <label className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-1.5">System Language</label>
                   <select
                     value={localization.language}
-                    onChange={(e) => setLocalization({ ...localization, language: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-[#0F172A] border border-gray-100 dark:border-gray-800 text-sm font-bold text-gray-600 dark:text-gray-300 focus:outline-none focus:border-primary/30 cursor-pointer"
+                    onChange={(e) => {
+                      const newLang = e.target.value;
+                      setLocalization({ ...localization, language: newLang });
+                      changeLanguage(newLang);
+                    }}
+                    className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-[#0F172A] border border-gray-100 dark:border-gray-800 text-sm font-bold text-gray-600 dark:text-gray-300 focus:outline-none focus:border-primary/30 cursor-pointer notranslate"
                   >
-                   <option value="English">English</option>
-                    <option value="Hindi">हिन्दी (Hindi)</option>
-                    <option value="Marathi">मराठी (Marathi)</option>
-                    <option value="Telugu">తెలుగు (Telugu)</option>
+                    {languages.map((l) => (
+                      <option key={l.code} value={l.code}>
+                        {l.native} ({l.label})
+                      </option>
+                    ))}
                   </select>
                 </div>
 

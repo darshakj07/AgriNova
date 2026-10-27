@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ThemeToggle from '../../components/ThemeToggle';
+import LanguageSelector from '../../components/LanguageSelector';
 
 export default function FarmerNavbar({ user: propUser }) {
   const navigate = useNavigate();
@@ -136,6 +137,7 @@ export default function FarmerNavbar({ user: propUser }) {
           {/* Right Utilities Section */}
           <div ref={navDropdownRef} className="flex items-center gap-2.5 sm:gap-4 ml-auto lg:ml-0 shrink-0">
             
+            <LanguageSelector />
             <ThemeToggle />
             {/* Notification Bell Dropdown */}
             <div className="relative">
