@@ -4,7 +4,6 @@ import Hero from '../components/Hero'
 import Stats from '../components/Stats'
 import Features from '../components/Features'
 import HowItWorks from '../components/HowItWorks'
-import Products from '../components/Products'
 import WeatherDashboard from '../components/WeatherDashboard'
 import MandiPrices from '../components/MandiPrices'
 import Benefits from '../components/Benefits'
@@ -21,7 +20,6 @@ export default function Home() {
       <Stats />
       <Features />
       <HowItWorks />
-      <Products />
       <WeatherDashboard />
       <MandiPrices />
       <Benefits />

@@ -14,14 +14,14 @@ export default function MandiPrices() {
   ];
 
   const mandiData = [
-    { name: 'Wheat (Sharbati)', category: 'grain', price: '$31.80/qtl', local: '₹2,650/qtl', change: '+2.4%', isPositive: true, volume: '2,420 Tons', mandi: 'Indore Mandi', trend: [30, 45, 60, 50, 75, 90] },
-    { name: 'Paddy (Basmati)', category: 'grain', price: '$48.50/qtl', local: '₹4,050/qtl', change: '+1.8%', isPositive: true, volume: '1,890 Tons', mandi: 'Karnal Mandi', trend: [40, 50, 52, 48, 55, 65] },
-    { name: 'Soybean (Yellow)', category: 'oilseed', price: '$56.20/qtl', local: '₹4,700/qtl', change: '-1.2%', isPositive: false, volume: '3,200 Tons', mandi: 'Dewas Mandi', trend: [68, 65, 63, 64, 60, 58] },
-    { name: 'Tomato (Hybrid)', category: 'vegetable', price: '$21.60/qtl', local: '₹1,800/qtl', change: '+12.5%', isPositive: true, volume: '840 Tons', mandi: 'Kolar Mandi', trend: [10, 20, 15, 30, 45, 65] },
-    { name: 'Potato (Jyoti)', category: 'vegetable', price: '$16.80/qtl', local: '₹1,400/qtl', change: '-0.5%', isPositive: false, volume: '1,560 Tons', mandi: 'Agra Mandi', trend: [20, 18, 19, 17, 18, 17] },
-    { name: 'Mustard Seeds', category: 'oilseed', price: '$65.80/qtl', local: '₹5,500/qtl', change: '+0.8%', isPositive: true, volume: '980 Tons', mandi: 'Alwar Mandi', trend: [55, 58, 57, 59, 62, 64] },
-    { name: 'Maize (Yellow)', category: 'grain', price: '$24.50/qtl', local: '₹2,050/qtl', change: '+1.1%', isPositive: true, volume: '1,220 Tons', mandi: 'Chhindwara Mandi', trend: [30, 32, 31, 33, 35, 38] },
-    { name: 'Onion (Red)', category: 'vegetable', price: '$22.80/qtl', local: '₹1,900/qtl', change: '-4.2%', isPositive: false, volume: '1,320 Tons', mandi: 'Lasalgaon Mandi', trend: [35, 32, 30, 28, 26, 24] },
+    { name: 'Wheat (Sharbati)', category: 'grain', price: '₹31.80/qtl', local: '₹2,650/qtl', change: '+2.4%', isPositive: true, volume: '2,420 Tons', mandi: 'Indore Mandi', trend: [30, 45, 60, 50, 75, 90] },
+    { name: 'Paddy (Basmati)', category: 'grain', price: '₹48.50/qtl', local: '₹4,050/qtl', change: '+1.8%', isPositive: true, volume: '1,890 Tons', mandi: 'Karnal Mandi', trend: [40, 50, 52, 48, 55, 65] },
+    { name: 'Soybean (Yellow)', category: 'oilseed', price: '₹56.20/qtl', local: '₹4,700/qtl', change: '-1.2%', isPositive: false, volume: '3,200 Tons', mandi: 'Dewas Mandi', trend: [68, 65, 63, 64, 60, 58] },
+    { name: 'Tomato (Hybrid)', category: 'vegetable', price: '₹21.60/qtl', local: '₹1,800/qtl', change: '+12.5%', isPositive: true, volume: '840 Tons', mandi: 'Kolar Mandi', trend: [10, 20, 15, 30, 45, 65] },
+    { name: 'Potato (Jyoti)', category: 'vegetable', price: '₹16.80/qtl', local: '₹1,400/qtl', change: '-0.5%', isPositive: false, volume: '1,560 Tons', mandi: 'Agra Mandi', trend: [20, 18, 19, 17, 18, 17] },
+    { name: 'Mustard Seeds', category: 'oilseed', price: '₹65.80/qtl', local: '₹5,500/qtl', change: '+0.8%', isPositive: true, volume: '980 Tons', mandi: 'Alwar Mandi', trend: [55, 58, 57, 59, 62, 64] },
+    { name: 'Maize (Yellow)', category: 'grain', price: '₹24.50/qtl', local: '₹2,050/qtl', change: '+1.1%', isPositive: true, volume: '1,220 Tons', mandi: 'Chhindwara Mandi', trend: [30, 32, 31, 33, 35, 38] },
+    { name: 'Onion (Red)', category: 'vegetable', price: '₹22.80/qtl', local: '₹1,900/qtl', change: '-4.2%', isPositive: false, volume: '1,320 Tons', mandi: 'Lasalgaon Mandi', trend: [35, 32, 30, 28, 26, 24] },
   ];
 
   // Filtering Logic

@@ -22,7 +22,7 @@ export default function Stats() {
     },
     { 
       id: 3, 
-      value: '$24.5M', 
+      value: '₹24.5M', 
       label: 'Input Costs Saved', 
       desc: 'Smart resource management optimization',
       icon: ShieldAlert,
